@@ -1,0 +1,18 @@
+/* LIST BOOK */
+
+article[class=book_item] {
+    border-bottom: solid rgba(100, 98, 98, 0.666) 1px;
+    padding: 1px 0 15px 0;
+}
+
+/* ADD BOOK */
+
+article[id=book_add] {
+    margin: 15px 0;
+}
+
+article[id=book_add] > form{
+    display: grid;
+    width: 20%;
+    row-gap: 5px;
+}
