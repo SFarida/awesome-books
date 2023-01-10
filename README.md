@@ -175,7 +175,7 @@ If you like this project you can follow me on github for more.
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse for providing me with the necessary resources.
+thanks to Microverse for providing the necessary resources.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
