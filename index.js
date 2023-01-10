@@ -36,6 +36,8 @@ loadBooksLocalStorage = () => {
   container.replaceChildren();
   for (let i = 0; i < books.length; i += 1) {
     // Creating the paragraphs
+    let articleBook = document.createElement('article')
+    articleBook.classList.add("book_article")
     const title = document.createElement('p');
     const author = document.createElement('p');
     const hr = document.createElement('hr');
@@ -58,10 +60,10 @@ loadBooksLocalStorage = () => {
         bookObj.removeBook(bookTitle);
       });
 
-    container.appendChild(title);
-    container.appendChild(author);
-    container.appendChild(button);
-    container.appendChild(hr);
+    container.appendChild(articleBook).appendChild(title);
+    container.appendChild(articleBook).appendChild(author);
+    container.appendChild(articleBook).appendChild(button);
+    container.appendChild(articleBook).appendChild(hr);
   }
 };
 

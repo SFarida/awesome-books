@@ -1,2 +1,39 @@
-/**     ↑
- *  This empty source */
+main{
+    margin: auto 10%;
+}
+
+.header_books {
+  text-align: center;
+}
+
+
+#book_add {
+    display: flex;
+    justify-content: center;
+}
+
+#form >input {
+    width: 100%;
+}
+
+#form > button {
+    float: right;
+}
+
+#books_list {
+    border: solid 2px black ;
+}
+
+#books_list > button {
+    height: 32px;
+    width: 104px;
+}
+
+.book_article {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px grey;
+}
