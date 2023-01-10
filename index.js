@@ -1,28 +1,35 @@
 /* eslint-disable no-unused-vars */
-/* eslint no-loop-func: "error" */
 let books;
 const bookList = document.getElementById('books_list');
-let loadBooksLocalStorage;
 
-function validateForm(e) {
-  e.preventDefault();
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const bookObj = {
-    title,
-    author,
+class Book {
+
+  constructor(books) {
+    this.books = books;
+  }
+
+  removeBook = (title) => {
+    books = books.filter((book) => book.title !== title);
+    localStorage.setItem('books', JSON.stringify(books));
+    loadBooksLocalStorage();
   };
-  books.push(bookObj);
-  document.getElementById('form').reset();
-  localStorage.setItem('books', JSON.stringify(books));
-  loadBooksLocalStorage();
+
+  validateForm(e) {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const bookObj = {
+      title,
+      author,
+    };
+    books.push(bookObj);
+    document.getElementById('form').reset();
+    localStorage.setItem('books', JSON.stringify(books));
+    loadBooksLocalStorage();
+  }
 }
 
-const removeBook = (title) => {
-  books = books.filter((book) => book.title !== title);
-  localStorage.setItem('books', JSON.stringify(books));
-  loadBooksLocalStorage();
-};
+const bookObj = new Book(books)
 
 loadBooksLocalStorage = () => {
   const container = bookList;
@@ -48,7 +55,7 @@ loadBooksLocalStorage = () => {
 
     button.addEventListener('click',
       () => {
-        removeBook(bookTitle);
+        bookObj.removeBook(bookTitle);
       });
 
     container.appendChild(title);
@@ -59,7 +66,7 @@ loadBooksLocalStorage = () => {
 };
 
 window.onload = () => {
-  document.getElementById('form').addEventListener('submit', validateForm);
+  document.getElementById('form').addEventListener('submit', bookObj.validateForm);
   books = JSON.parse(localStorage.getItem('books')) || [];
   loadBooksLocalStorage();
 };
