@@ -1,20 +1,11 @@
 let books;
 const bookList = document.getElementById('books_list');
 
-function validateForm(e) {
-  e.preventDefault();
-  let title = document.getElementById('title').value, 
-  author = document.getElementById('author').value
-  const bookObj = {
-    title,
-    author
-  };
-  books.push(bookObj);
-
+const removeBook = (title) => {
+  books = books.filter((book) => book.title !== title);
   localStorage.setItem('books', JSON.stringify(books));
   loadBooksLocalStorage();
-  document.getElementById('form').reset();
-}
+};
 
 const loadBooksLocalStorage = () => {
   const container = bookList;
@@ -32,16 +23,16 @@ const loadBooksLocalStorage = () => {
     const buttonText = document.createTextNode('Remove');
 
     // Append text to nodes
-    title.appendChild(titleText)
-    author.appendChild(authorText)
-    button.appendChild(buttonText)
+    title.appendChild(titleText);
+    author.appendChild(authorText);
+    button.appendChild(buttonText);
     // button.setAttribute("id", books[i].title)
 
     // button.addEventListener('click', removeBook(books[i].title));
-    button.addEventListener('click', 
-    () => {
-      removeBook(books[i].title);
-    });
+    button.addEventListener('click',
+      () => {
+        removeBook(books[i].title);
+      });
 
     container.appendChild(title);
     container.appendChild(author);
@@ -50,10 +41,19 @@ const loadBooksLocalStorage = () => {
   }
 };
 
-const removeBook = (title) => {
-  books = books.filter((book) => book.title !== title)
+function validateForm(e) {
+  e.preventDefault();
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const bookObj = {
+    title,
+    author,
+  };
+  books.push(bookObj);
+
   localStorage.setItem('books', JSON.stringify(books));
   loadBooksLocalStorage();
+  document.getElementById('form').reset();
 }
 
 window.onload = () => {
@@ -61,4 +61,3 @@ window.onload = () => {
   books = JSON.parse(localStorage.getItem('books')) || [];
   loadBooksLocalStorage();
 };
-
