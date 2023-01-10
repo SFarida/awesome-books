@@ -1,58 +1,64 @@
-const books = JSON.parse(localStorage.getItem('books')) || [];
+let books;
 const bookList = document.getElementById('books_list');
-function Book(id, title, autor) {
-  this.id = id;
-  this.title = title;
-  this.autor = autor;
+
+function validateForm(e) {
+  e.preventDefault();
+  let title = document.getElementById('title').value, 
+  author = document.getElementById('author').value
+  const bookObj = {
+    title,
+    author
+  };
+  books.push(bookObj);
+
+  localStorage.setItem('books', JSON.stringify(books));
+  loadBooksLocalStorage();
+  document.getElementById('form').reset();
 }
 
-const saveBooksLocalStorage = () => {
-  localStorage.setItem('books', JSON.stringify(books));
-};
-
 const loadBooksLocalStorage = () => {
-  const booksTemp = JSON.parse(localStorage.getItem('books'));
-  booksTemp.forEach((element) => {
-    const articleBook = `
-                <article class="book_item">
-                    <h4>${element.autor}</h4>
-                    <h5>${element.title}</h5>
-                    <button class="remove_book" id="book${element.id}" type="button" >Remove</button>
-                </article>`;
-    bookList.innerHTML += articleBook;
-  });
+  const container = bookList;
+  container.replaceChildren();
+  for (let i = 0; i < books.length; i += 1) {
+    // Creating the paragraphs
+    const title = document.createElement('p');
+    const author = document.createElement('p');
+    const hr = document.createElement('hr');
+    const button = document.createElement('button');
+
+    // Creating text nodes
+    const titleText = document.createTextNode(books[i].title);
+    const authorText = document.createTextNode(books[i].author);
+    const buttonText = document.createTextNode('Remove');
+
+    // Append text to nodes
+    title.appendChild(titleText)
+    author.appendChild(authorText)
+    button.appendChild(buttonText)
+    // button.setAttribute("id", books[i].title)
+
+    // button.addEventListener('click', removeBook(books[i].title));
+    button.addEventListener('click', 
+    () => {
+      removeBook(books[i].title);
+    });
+
+    container.appendChild(title);
+    container.appendChild(author);
+    container.appendChild(button);
+    container.appendChild(hr);
+  }
 };
 
-const btnAddBook = document.getElementById('create_book');
-
-let count = 0;
-btnAddBook.addEventListener('click', (event) => {
-  event.preventDefault();
-  const titleBook = document.getElementById('input_title').value;
-  const authorBook = document.getElementById('input_author').value;
-  books.push(new Book(count, titleBook, authorBook));
-  const articleBook = `
-                <article class="book_item">
-                    <h4>${books[count].autor}</h4>
-                    <h5>${books[count].title}</h5>
-                    <button class="remove_book" id="book${count}" type="button" >Remove</button>
-                </article>`;
-  bookList.innerHTML += articleBook;
-  document.getElementById('form').reset();
-  count += 1;
-  saveBooksLocalStorage();
-});
+const removeBook = (title) => {
+  books = books.filter((book) => book.title !== title)
+  localStorage.setItem('books', JSON.stringify(books));
+  loadBooksLocalStorage();
+}
 
 window.onload = () => {
+  document.getElementById('form').addEventListener('submit', validateForm);
+  books = JSON.parse(localStorage.getItem('books')) || [];
   loadBooksLocalStorage();
 };
 
-function addArticleBook(element) {
-    const articleBook =
-                `<article class="book_item">
-                    <h4>${element.autor}</h4>
-                    <h5>${element.title}</h5>
-                    <button class="remove_book" id="book${count}" type="button" >Remove</button>
-                </article>`;
-  bookList.innerHTML += articleBook;
-}
