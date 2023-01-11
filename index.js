@@ -2,7 +2,7 @@
 
 let books;
 const bookList = document.getElementById('books_list');
-const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 class Book {
   constructor(title, author) {
@@ -32,9 +32,9 @@ class Book {
 const addDate = () => {
   const p = document.getElementById('date');
   const d = new Date();
-  const pText = document.createTextNode(`${months[d.getMonth()]} ${d.getDay()}th ${d.getFullYear()}, ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} pm`)
+  const pText = document.createTextNode(`${months[d.getMonth()]} ${d.getDay()}th ${d.getFullYear()}, ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} pm`);
   p.appendChild(pText);
-}
+};
 
 const bookTitle = document.getElementById('title').value;
 const bookAuthor = document.getElementById('author').value;
@@ -81,29 +81,29 @@ window.onload = () => {
   addDate();
 };
 
-//LOAD PAGEs
-function loadContent(startPage = "list_link", destinationPage) {
-  document.querySelector(`.${startPage}`).classList.add("hidden")
-  document.querySelector(`.${destinationPage}`).classList.remove('hidden')
+// LOAD PAGEs
+function loadContent(startPage = 'list_link', destinationPage) {
+  document.querySelector(`.${startPage}`).classList.add('hidden');
+  document.querySelector(`.${destinationPage}`).classList.remove('hidden');
 }
 
-var previous_id;
+let previousId;
 function setId(id) {
-  previous_id = id
+  previousId = id;
 }
 
-//Add onblur event Listener to each nav botton
-document.getElementById("list_link").addEventListener('blur', (e) => {
-  setId(e.target.id)
-})
-document.getElementById("list_add_new").addEventListener('blur', (e) => {
-  setId(e.target.id)
-})
-document.getElementById("list_about").addEventListener('blur', (e) => {
-  setId(e.target.id)
-})
+// Add onblur event Listener to each nav botton
+document.getElementById('list_link').addEventListener('blur', (e) => {
+  setId(e.target.id);
+});
+document.getElementById('list_add_new').addEventListener('blur', (e) => {
+  setId(e.target.id);
+});
+document.getElementById('list_about').addEventListener('blur', (e) => {
+  setId(e.target.id);
+});
 
 //
-document.getElementById("nav_list").addEventListener('click', (e) => {
-  loadContent(previous_id, e.target.id)
-})
+document.getElementById('nav_list').addEventListener('click', (e) => {
+  loadContent(previousId, e.target.id);
+});

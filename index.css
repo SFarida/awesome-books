@@ -75,7 +75,7 @@ td {
   justify-content: space-between;
 }
 
-#nav_bar >* {
+#nav_bar > * {
   margin-left: 30px;
   margin-right: 27px;
 }
@@ -86,7 +86,7 @@ td {
   align-items: center;
 }
 
-#nav_list >li {
+#nav_list > li {
   list-style: none;
 }
 
@@ -104,7 +104,8 @@ td {
   border-left: solid 1.5px black;
   border-right: solid 1.5px black;
 }
-footer{
+
+footer {
   border: solid 2px black;
   padding: 0 10px;
 }
@@ -119,9 +120,7 @@ footer{
   align-items: center;
 }
 
-.date-container{
+.date-container {
   display: flex;
   justify-content: end;
 }
-
-
