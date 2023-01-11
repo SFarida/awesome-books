@@ -1,9 +1,15 @@
 main {
   margin: auto 10%;
+  height: 100vh;
+}
+
+section {
+  height: 68vh;
 }
 
 .header_books {
   text-align: center;
+  font-size: 30px;
 }
 
 #book_add {
@@ -15,12 +21,18 @@ button {
   box-shadow: 3px 3px 1px black;
 }
 
+#form {
+  width: 55%;
+}
+
 #form > input {
   width: 100%;
+  border-color: black;
 }
 
 #form > button {
   float: right;
+  margin-bottom: 10%;
 }
 
 #books_list {
@@ -54,3 +66,58 @@ td {
 .separator {
   width: 20%;
 }
+
+#nav_bar {
+  border: solid 2px black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#nav_bar >* {
+  margin-left: 30px;
+  margin-right: 27px;
+}
+
+#nav_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#nav_list >li {
+  list-style: none;
+}
+
+.nav_link {
+  color: black;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+.nav_link:focus {
+  color: blue;
+}
+
+#list_add_new {
+  border-left: solid 1.5px black;
+  border-right: solid 1.5px black;
+}
+footer{
+  border: solid 2px black;
+  padding: 0 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#contact_us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+

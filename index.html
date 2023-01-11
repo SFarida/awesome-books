@@ -9,8 +9,18 @@
 </head>
 <body>
     <main>
-        <header></header>
-        <section>
+        <header>
+            <nav id="nav_bar">
+                <h1>Awesome books</h1>
+                <ul id="nav_list">
+                    <li><a href="#" class="nav_link" id="list_link" >List</a></li>
+                    <li><a href="#" class="nav_link" id="list_add_new"  >Add new</a></li>
+                    <li><a href="#" class="nav_link" id="list_about" >About</a></li>
+                </ul>  
+            </nav>
+        </header>
+        <p id="date"></p>
+        <section class="list_link">
             <div class="header_books">
                 <h1>All awesome books</h1>
             </div>
@@ -18,11 +28,11 @@
                 <tbody id="books_list">
                   
                 </tbody>
-                </table>
+            </table>
         </section id="books_add">
         <br>
         <hr class="separator">
-        <section>
+        <section class="list_add_new hidden">
             <div class="header_books">
                 <h1>Add a new book</h1>
             </div>
@@ -34,6 +44,26 @@
                 </form>
             </div>
         </section>
+        <section class="list_about hidden">
+            <div class="header_books">
+                <h1>Contact information</h1>
+            </div>
+            <div id="contact_us">
+                <p>
+                    Do have any question or you just want to say "Hello"?<br>
+                    You can reach out to us : 
+                </p>
+                <ul>
+                    <li>Our e-mail : <a href="mailto:awasomebooks@gmail.com" class="nav_link">awasomebooks@gmail.com</a> </li>
+                    <li>Our phone number : +243820000000</li>
+                    <li>Our address : street 22, city, country </li>
+                </ul>
+        
+            </div>
+        </section>
+        <footer>
+            <p id="copyright">Copyright</p>
+        </footer>
     </main>
     <script src="index.js"></script>
 </body>

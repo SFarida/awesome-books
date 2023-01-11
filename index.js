@@ -71,3 +71,22 @@ window.onload = () => {
   books = JSON.parse(localStorage.getItem('books')) || [];
   loadBooksLocalStorage();
 };
+
+//LOAD PAGEs
+
+
+//Add onblur event Listener to each nav botton
+document.getElementById("list_link").addEventListener('blur',(e)=>{
+  setId(e.target.id)
+})
+document.getElementById("list_add_new").addEventListener('blur',(e)=>{
+  setId(e.target.id)
+})
+document.getElementById("list_about").addEventListener('blur',(e)=>{
+  setId(e.target.id)
+})
+
+//
+document.getElementById("nav_list").addEventListener('click',(e)=>{
+    loadContent(previous_id,e.target.id)
+})
