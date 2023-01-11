@@ -119,5 +119,9 @@ footer{
   align-items: center;
 }
 
+.date-container{
+  display: flex;
+  justify-content: end;
+}
 
 

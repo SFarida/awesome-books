@@ -2,6 +2,7 @@
 
 let books;
 const bookList = document.getElementById('books_list');
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 class Book {
   constructor(title, author) {
@@ -26,6 +27,13 @@ class Book {
     localStorage.setItem('books', JSON.stringify(books));
     loadBooksLocalStorage();
   }
+}
+
+const addDate = () => {
+  const p = document.getElementById('date');
+  const d = new Date();
+  const pText = document.createTextNode(`${months[d.getMonth()]} ${d.getDay()}th ${d.getFullYear()}, ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()} pm`)
+  p.appendChild(pText);
 }
 
 const bookTitle = document.getElementById('title').value;
@@ -70,6 +78,7 @@ window.onload = () => {
   document.getElementById('form').addEventListener('submit', bookObj.validateForm);
   books = JSON.parse(localStorage.getItem('books')) || [];
   loadBooksLocalStorage();
+  addDate();
 };
 
 //LOAD PAGEs
