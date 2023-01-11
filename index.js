@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* global loadBooksLocalStorage:writable */
 
 let books;
